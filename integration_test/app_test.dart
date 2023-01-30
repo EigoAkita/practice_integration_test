@@ -20,7 +20,7 @@ import 'package:practice_integration_test/main.dart' as app;
 //【エラー対処後】
 // fvm flutter test integration_test/app_test.dart -d［デバイスID］実行
 // ※ 実行時はPCとAndroid［ASUS_Z017DA］同士を接続した状態
-//「01:00 +1: All tests passed! 」歓喜！！！(T ^ T)
+//「01:00 +1: All tests passed! 」
 
 void main() {
   // 物理デバイスでテストを実行するシングルトンサービス
@@ -36,7 +36,7 @@ void main() {
           app.main();
           // Widget Testerクラスを使用して、ウィジェットを操作してテスト実行
           // pumpAndSettleで画面の起動を待つ
-          await tester.pumpAndSettle();
+          await tester.pumpAndSettle(Duration(seconds: 5));
 
           // カウンターが「0」から始まる事を確認します
           expect(find.text('0'), findsOneWidget);
@@ -51,7 +51,7 @@ void main() {
           // デバイス上でタップが実行された後、
           // カウンターの値がIncrement（0 → 1）されるはずなので、
           // その間、結果を待ちます
-          await tester.pumpAndSettle();
+          await tester.pumpAndSettle(Duration(seconds: 5));
 
           // フローティングアクションボタンをタップ後、
           // カウンターの値が0 → 1に変化したか確認します
